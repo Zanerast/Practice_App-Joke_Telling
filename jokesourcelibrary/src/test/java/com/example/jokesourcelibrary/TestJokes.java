@@ -1,21 +1,19 @@
 package com.example.jokesourcelibrary;
 
 
-import com.example.jokesourcelibrary.FunnyJokes;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestJokes {
 
-    FunnyJokes funnyJokes;
+    FunnyJokesSource funnyJokesSource;
     String joke;
 
     @Before
     public void setUpJokes() {
-        funnyJokes = new FunnyJokes();
-        joke = funnyJokes.getJoke();
+        funnyJokesSource = new FunnyJokesSource();
+        joke = funnyJokesSource.getJoke();
     }
 
     @Test

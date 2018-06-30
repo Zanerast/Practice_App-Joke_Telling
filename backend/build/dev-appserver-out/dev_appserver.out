@@ -1,27 +1,46 @@
+Jun 30, 2018 12:30:27 PM com.google.appengine.tools.util.Logging initializeLogging
+INFO: Failed to read the default logging configuration
+java.io.FileNotFoundException: C:\Users\Zane\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.util.logging.LogManager.readConfiguration(LogManager.java:1301)
+	at com.google.appengine.tools.util.Logging.initializeLogging(Logging.java:38)
+	at com.google.appengine.tools.development.SharedMain.sharedInit(SharedMain.java:164)
+	at com.google.appengine.tools.development.DevAppServerMain.main(DevAppServerMain.java:237)
+
 Warning: Google App Engine Java 7 runtime is deprecated.
 Warning: See https://cloud.google.com/appengine/docs/deprecations/java7
-Jun 26, 2018 9:32:42 AM com.google.appengine.tools.development.SystemPropertiesManager setSystemProperties
-INFO: Overwriting system property key 'java.util.logging.config.file', value 'C:\Users\Zane\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties' with value 'WEB-INF/logging.properties' from 'C:\Users\Zane\ASProjects\UC_ND\Joke Teller\backend\build\exploded-backend\WEB-INF\appengine-web.xml'
-Jun 26, 2018 9:32:43 AM com.google.apphosting.utils.jetty.JettyLogger info
-INFO: Logging to JettyLogger(null) via com.google.apphosting.utils.jetty.JettyLogger
-Jun 26, 2018 8:32:44 AM com.google.appengine.tools.development.IsolatedAppClassLoader checkWorkingDirectory
-WARNING: Your working directory, (C:\Users\Zane\ASProjects\UC_ND\Joke Teller) is not equal to your 
-web application root (C:\Users\Zane\ASProjects\UC_ND\Joke Teller\backend\build\exploded-backend)
-You will not be able to access files from your working directory on the production server.
+Jun 30, 2018 12:30:29 PM com.google.appengine.tools.development.LoggingConfigurationManager loadPropertiesFile
+WARNING: Unable to load properties file, C:\Users\Zane\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties
+java.io.FileNotFoundException: C:\Users\Zane\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at com.google.appengine.tools.development.LoggingConfigurationManager.loadPropertiesFile(LoggingConfigurationManager.java:170)
+	at com.google.appengine.tools.development.LoggingConfigurationManager.read(LoggingConfigurationManager.java:84)
+	at com.google.appengine.tools.development.ApplicationConfigurationManager.validateAndRegisterGlobalValues(ApplicationConfigurationManager.java:183)
+	at com.google.appengine.tools.development.ApplicationConfigurationManager.access$400(ApplicationConfigurationManager.java:31)
+	at com.google.appengine.tools.development.ApplicationConfigurationManager$WarModuleConfigurationHandle.readConfiguration(ApplicationConfigurationManager.java:443)
+	at com.google.appengine.tools.development.ApplicationConfigurationManager.<init>(ApplicationConfigurationManager.java:158)
+	at com.google.appengine.tools.development.ApplicationConfigurationManager.newWarConfigurationManager(ApplicationConfigurationManager.java:100)
+	at com.google.appengine.tools.development.ApplicationConfigurationManager.newWarConfigurationManager(ApplicationConfigurationManager.java:86)
+	at com.google.appengine.tools.development.DevAppServerImpl.<init>(DevAppServerImpl.java:146)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.google.appengine.tools.development.DevAppServerFactory.doCreateDevAppServer(DevAppServerFactory.java:386)
+	at com.google.appengine.tools.development.DevAppServerFactory.access$000(DevAppServerFactory.java:31)
+	at com.google.appengine.tools.development.DevAppServerFactory$1.run(DevAppServerFactory.java:318)
+	at com.google.appengine.tools.development.DevAppServerFactory$1.run(DevAppServerFactory.java:315)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.google.appengine.tools.development.DevAppServerFactory.createDevAppServer(DevAppServerFactory.java:314)
+	at com.google.appengine.tools.development.DevAppServerMain$StartAction.apply(DevAppServerMain.java:374)
+	at com.google.appengine.tools.util.Parser$ParseResult.applyArgs(Parser.java:45)
+	at com.google.appengine.tools.development.DevAppServerMain.run(DevAppServerMain.java:247)
+	at com.google.appengine.tools.development.DevAppServerMain.main(DevAppServerMain.java:238)
 
-Jun 26, 2018 8:32:47 AM com.google.apphosting.utils.jetty.JettyLogger info
-INFO: jetty-6.1.x
-Jun 26, 2018 8:32:58 AM com.google.apphosting.utils.jetty.JettyLogger info
-INFO: Started SelectChannelConnector@localhost:8080
-Jun 26, 2018 8:32:58 AM com.google.appengine.tools.development.AbstractModule startup
-INFO: Module instance default is running at http://localhost:8080/
-Jun 26, 2018 8:32:58 AM com.google.appengine.tools.development.AbstractModule startup
-INFO: The admin console is running at http://localhost:8080/_ah/admin
-Jun 26, 2018 9:32:58 AM com.google.appengine.tools.development.DevAppServerImpl doStart
-INFO: Dev App Server is now running
-Jun 26, 2018 9:33:17 AM com.google.appengine.repackaged.com.google.protobuf.UnsafeUtil supportsUnsafeByteBufferOperations
-WARNING: platform method missing - proto runtime falling back to safer methods: java.security.AccessControlException: access denied ("java.lang.RuntimePermission" "accessClassInPackage.sun.misc")
-Jun 26, 2018 9:33:17 AM com.google.appengine.repackaged.com.google.protobuf.UnsafeUtil supportsUnsafeArrayOperations
-WARNING: platform method missing - proto runtime falling back to safer methods: java.security.AccessControlException: access denied ("java.lang.RuntimePermission" "accessClassInPackage.sun.misc")
-Jun 26, 2018 9:33:25 AM com.google.appengine.tools.development.LocalResourceFileServlet doGet
-WARNING: No file found for: /favicon.ico
+Jun 30, 2018 12:30:29 PM com.google.appengine.tools.development.SystemPropertiesManager setSystemProperties
+INFO: Overwriting system property key 'java.util.logging.config.file', value 'C:\Users\Zane\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties' with value 'WEB-INF/logging.properties' from 'C:\Users\Zane\ASProjects\UC_ND\Joke Teller\backend\build\exploded-backend\WEB-INF\appengine-web.xml'

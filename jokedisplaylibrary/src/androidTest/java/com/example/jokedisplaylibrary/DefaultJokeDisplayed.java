@@ -2,7 +2,6 @@ package com.example.jokedisplaylibrary;
 
 import android.support.test.rule.ActivityTestRule;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -16,8 +15,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 public class DefaultJokeDisplayed {
 
     @Rule
-    public ActivityTestRule<JokeActivity> mJokeActivityTestRule =
-            new ActivityTestRule<>(JokeActivity.class);
+    public ActivityTestRule<JokeDisplayActivity> mJokeActivityTestRule =
+            new ActivityTestRule<>(JokeDisplayActivity.class);
 
     @Test
     public void checkJokeDisplayed(){
