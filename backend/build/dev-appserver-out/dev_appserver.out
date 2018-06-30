@@ -1,4 +1,4 @@
-Jun 30, 2018 12:30:27 PM com.google.appengine.tools.util.Logging initializeLogging
+Jun 30, 2018 6:22:41 PM com.google.appengine.tools.util.Logging initializeLogging
 INFO: Failed to read the default logging configuration
 java.io.FileNotFoundException: C:\Users\Zane\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties (The system cannot find the path specified)
 	at java.io.FileInputStream.open0(Native Method)
@@ -12,7 +12,7 @@ java.io.FileNotFoundException: C:\Users\Zane\AppData\Local\Google\Cloud SDK\goog
 
 Warning: Google App Engine Java 7 runtime is deprecated.
 Warning: See https://cloud.google.com/appengine/docs/deprecations/java7
-Jun 30, 2018 12:30:29 PM com.google.appengine.tools.development.LoggingConfigurationManager loadPropertiesFile
+Jun 30, 2018 6:22:46 PM com.google.appengine.tools.development.LoggingConfigurationManager loadPropertiesFile
 WARNING: Unable to load properties file, C:\Users\Zane\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties
 java.io.FileNotFoundException: C:\Users\Zane\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties (The system cannot find the path specified)
 	at java.io.FileInputStream.open0(Native Method)
@@ -42,5 +42,5 @@ java.io.FileNotFoundException: C:\Users\Zane\AppData\Local\Google\Cloud SDK\goog
 	at com.google.appengine.tools.development.DevAppServerMain.run(DevAppServerMain.java:247)
 	at com.google.appengine.tools.development.DevAppServerMain.main(DevAppServerMain.java:238)
 
-Jun 30, 2018 12:30:29 PM com.google.appengine.tools.development.SystemPropertiesManager setSystemProperties
+Jun 30, 2018 6:22:46 PM com.google.appengine.tools.development.SystemPropertiesManager setSystemProperties
 INFO: Overwriting system property key 'java.util.logging.config.file', value 'C:\Users\Zane\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties' with value 'WEB-INF/logging.properties' from 'C:\Users\Zane\ASProjects\UC_ND\Joke Teller\backend\build\exploded-backend\WEB-INF\appengine-web.xml'
