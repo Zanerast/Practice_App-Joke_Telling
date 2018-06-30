@@ -10,9 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.jokedisplaylibrary.JokeDisplayActivity;
-import com.example.jokesourcelibrary.FunnyJokesSource;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 
 /**
@@ -21,6 +18,7 @@ import com.google.android.gms.ads.AdView;
 public class MainActivityFragment extends Fragment implements AsyncEndpoint.AfterJokeLoad {
 
     private final String LOG_TAG = MainActivityFragment.class.getSimpleName();
+    public String mJoke;
 
     public MainActivityFragment() {
     }
@@ -45,17 +43,14 @@ public class MainActivityFragment extends Fragment implements AsyncEndpoint.Afte
     public void tellJoke() {
         Log.i(LOG_TAG, "MSG! tellJoke()");
 
-//        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
-
-
         new AsyncEndpoint(this).execute();
-
     }
 
     @Override
     public void jokeLoaded(String joke) {
         Log.i(LOG_TAG, "MSG! jokeLoaded()");
 
+        mJoke = joke;
         Intent intent = new Intent(getActivity(), JokeDisplayActivity.class);
         intent.putExtra(JokeDisplayActivity.JOKE_KEY, joke);
 

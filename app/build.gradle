@@ -5,6 +5,9 @@ apply plugin: 'com.google.cloud.tools.endpoints-framework-client'
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
     }
     dependencies {
         classpath 'com.google.cloud.tools:endpoints-framework-gradle-plugin:1.0.2'

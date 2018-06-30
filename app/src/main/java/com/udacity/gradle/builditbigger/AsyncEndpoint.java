@@ -18,6 +18,8 @@ public class AsyncEndpoint extends AsyncTask<Void, Void, String> {
 
     private static MyApi myApiService = null;
 
+    public static String mJoke;
+
     public interface AfterJokeLoad{ void jokeLoaded(String joke); }
 
     private AfterJokeLoad mAfterJokeLoad;
@@ -61,8 +63,11 @@ public class AsyncEndpoint extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String joke) {
         Log.i(LOG_TAG, "MSG! onPostExecute()");
         super.onPostExecute(joke);
+        mJoke = joke;
 
-        mAfterJokeLoad.jokeLoaded(joke);
+        if (mAfterJokeLoad != null) {
+            mAfterJokeLoad.jokeLoaded(joke);
+        }
     }
 
 

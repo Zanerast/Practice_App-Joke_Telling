@@ -13,6 +13,8 @@ import com.example.jokedisplaylibrary.JokeDisplayActivity;
 import com.example.jokesourcelibrary.FunnyJokesSource;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 
 /**
@@ -21,6 +23,8 @@ import com.google.android.gms.ads.AdView;
 public class MainActivityFragment extends Fragment implements AsyncEndpoint.AfterJokeLoad {
 
     private final String LOG_TAG = MainActivityFragment.class.getSimpleName();
+    public String mJoke;
+    private InterstitialAd mInterstitialAd;
 
     public MainActivityFragment() {
     }
@@ -32,12 +36,7 @@ public class MainActivityFragment extends Fragment implements AsyncEndpoint.Afte
 
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         Button btnLaunchJokeLib = root.findViewById(R.id.btn_tell_joke);
-        btnLaunchJokeLib.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tellJoke();
-            }
-        });
+
 
         AdView mAdView = (AdView) root.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
@@ -47,26 +46,44 @@ public class MainActivityFragment extends Fragment implements AsyncEndpoint.Afte
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
+        MobileAds.initialize(getContext(), "ca-app-pub-3940256099942544~3347511713");
+
+        mInterstitialAd = new InterstitialAd(getContext());
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        btnLaunchJokeLib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                tellJoke();
+            }
+        });
         return root;
     }
 
     public void tellJoke() {
         Log.i(LOG_TAG, "MSG! tellJoke()");
 
-//        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
-
-
         new AsyncEndpoint(this).execute();
-
     }
 
     @Override
     public void jokeLoaded(String joke) {
         Log.i(LOG_TAG, "MSG! jokeLoaded()");
 
+        mJoke = joke;
         Intent intent = new Intent(getActivity(), JokeDisplayActivity.class);
         intent.putExtra(JokeDisplayActivity.JOKE_KEY, joke);
 
         startActivity(intent);
+
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Log.d(LOG_TAG, "MSG! The interstitial wasn't loaded yet.");
+        }
     }
 }
