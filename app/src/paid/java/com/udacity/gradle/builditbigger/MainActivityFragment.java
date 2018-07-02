@@ -8,14 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.jokedisplaylibrary.JokeDisplayActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-/**
- * A placeholder fragment containing a simple view.
- */
+
 public class MainActivityFragment extends Fragment implements AsyncEndpoint.AfterJokeLoad {
+
+
+    @BindView(R.id.pb_loading_indicator)
+    ProgressBar progressBar;
+    @BindView(R.id.btn_tell_joke)
+    Button btnTellJoke;
+    @BindView(R.id.tv_instructions)
+    TextView tvInstructions;
 
     private final String LOG_TAG = MainActivityFragment.class.getSimpleName();
     public String mJoke;
@@ -26,11 +36,11 @@ public class MainActivityFragment extends Fragment implements AsyncEndpoint.Afte
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.i(LOG_TAG, "MSG! onCreateView()");
 
         View root = inflater.inflate(R.layout.fragment_main, container, false);
-        Button btnLaunchJokeLib = root.findViewById(R.id.btn_tell_joke);
-        btnLaunchJokeLib.setOnClickListener(new View.OnClickListener() {
+        ButterKnife.bind(this, root);
+
+        btnTellJoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tellJoke();
@@ -41,19 +51,37 @@ public class MainActivityFragment extends Fragment implements AsyncEndpoint.Afte
     }
 
     public void tellJoke() {
-        Log.i(LOG_TAG, "MSG! tellJoke()");
+
+        setVisibilities(true);
 
         new AsyncEndpoint(this).execute();
     }
 
     @Override
     public void jokeLoaded(String joke) {
-        Log.i(LOG_TAG, "MSG! jokeLoaded()");
+
+        setVisibilities(false);
 
         mJoke = joke;
         Intent intent = new Intent(getActivity(), JokeDisplayActivity.class);
         intent.putExtra(JokeDisplayActivity.JOKE_KEY, joke);
 
         startActivity(intent);
+
+        setVisibilities(false);
+
+    }
+
+    private void setVisibilities(boolean loading) {
+
+        if (loading) {
+            tvInstructions.setVisibility(View.INVISIBLE);
+            btnTellJoke.setVisibility(View.INVISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.INVISIBLE);
+            tvInstructions.setVisibility(View.VISIBLE);
+            btnTellJoke.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -15,13 +15,13 @@ buildscript {
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.3"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -48,15 +48,12 @@ android {
         }
     }
 
-
-
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     endpointsServer project(path: ':backend', configuration: 'endpoints')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
     freeImplementation 'com.google.android.gms:play-services-ads:15.0.1'
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
@@ -64,6 +61,8 @@ dependencies {
     implementation project(":jokedisplaylibrary")
     implementation project(":jokesourcelibrary")
     endpointsServer project(path: ':backend', configuration: 'endpoints')
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

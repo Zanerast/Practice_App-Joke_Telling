@@ -11,7 +11,7 @@
     tools:context=".MainActivityFragment">
 
     <TextView
-        android:id="@+id/instructions_text_view"
+        android:id="@+id/tv_instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/instructions" />
@@ -19,9 +19,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/instructions_text_view"
+        android:layout_below="@+id/tv_instructions"
         android:id="@+id/btn_tell_joke"
         android:text="@string/button_text" />
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_tell_joke"
+        android:visibility="invisible"
+        android:id="@+id/pb_loading_indicator"/>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
